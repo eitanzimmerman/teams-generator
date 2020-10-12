@@ -1,0 +1,73 @@
+@import '../../assets/vars.scss';
+
+.add-player{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    background-color: $blue-2;
+    opacity: 0.85;
+    
+
+    .player-info{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: .2rem;
+
+        &-name{
+            display: flex;
+            flex: 0 0 30%;
+            flex-direction: column;
+           
+
+            &-title{
+                align-self: flex-end;
+                font-size: 2.5rem;
+                color: $text;
+            }
+
+            &-input{
+                background-color: $blue-3;
+                opacity: 0.6;
+                outline: none;
+                border: none;
+                padding-right: 1rem;
+                height: 2.2rem;
+                border-radius: 10rem;
+                width: 100%;
+                color: $text;
+                font-size: 1.8rem;
+                font-family: 'Rubik', sans-serif;
+
+                &:focus,
+                &:hover,
+                &:active{
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+
+        &-level{
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 30%;
+
+                &-title{
+                    align-self: flex-start;
+                    font-size: 2.5rem;
+                    color: $text;
+                }
+            }
+        
+    }
+
+    .player-button{
+        display: flex;
+        width: 30%;
+        margin: 1rem;
+    }
+}

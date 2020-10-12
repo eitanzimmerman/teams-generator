@@ -1,0 +1,19 @@
+.main-page{
+    width: 100%;
+    justify-content: center;
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 40vw 30vw;
+    grid-template-rows: 25vh 25vh;
+    gap: 3rem 5rem;
+    
+
+    .box{
+        background-color: red;
+    }
+    
+
+    .b-4{
+        align-self: center;
+    }
+}

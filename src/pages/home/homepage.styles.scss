@@ -1,0 +1,34 @@
+@import '../../assets/vars.scss';
+
+.homepage {
+    margin-top: 2rem;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-title{
+        font-size: 6rem;
+        color: $blue-2;
+    }
+
+    &-workflow{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .workflow-item{
+            margin-top: 2rem;
+            font-size: 4rem;
+            color: $text;
+        }
+
+        .workflow-arrow {
+            margin-top: 3rem;
+            fill: $red;
+            transform: scale(1.5);
+            
+        }
+    }
+}

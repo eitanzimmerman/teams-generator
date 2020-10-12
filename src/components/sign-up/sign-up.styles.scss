@@ -1,0 +1,25 @@
+@import '../../assets/vars.scss';
+
+.sign-up {
+    background-image: url('../../assets/log-in.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-height: 70vh;
+    padding: 3rem;
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+
+    h1{
+        margin-top: 3rem;
+        font-size: 4rem;
+        color: $text;
+    }
+
+    .sign-up-form{
+        width: 100%;
+    }
+
+}
