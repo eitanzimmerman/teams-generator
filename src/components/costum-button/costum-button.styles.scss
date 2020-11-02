@@ -1,7 +1,9 @@
 @import '../../assets/vars.scss';
 
 .costum-button {
-    width: 100%;
+    // width: 100%;
+    min-height: 70px;
+    max-width: 500px;
     height: auto;
     padding: .1rem 2rem;
     font-size: 2.5rem;
@@ -33,6 +35,17 @@
 .medium {
     font-size: 3rem;
 }
- small {
+ .small {
      font-size: 2.5rem;
  }
+
+ .blue {
+     background-color: $blue-4;
+     color: $blue-1;
+
+     &:hover{
+         background-color: $darker-blue-4
+     }
+ }
+
+ 
