@@ -16,7 +16,7 @@ const PlayersList = ({players, removeItemFromList}) => {
                         const modulo = index%2;
                         const opacity = opacityObj[modulo]
                     return (
-                    <li className='players-list-item' onClick={() => removeItemFromList(player.name, player.grade)} style={{opacity : opacity}}>
+                    <li key={index} className='players-list-item' onClick={() => removeItemFromList(player.name, player.grade)} style={{opacity : opacity}}>
                         <span className='player-list-item-info'>{player.name}</span>
                         <span className='player-list-item-info'>{player.grade}</span>
                     </li>

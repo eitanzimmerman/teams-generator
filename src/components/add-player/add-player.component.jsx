@@ -21,7 +21,7 @@ const AddPlayer = ({addPlayerToList}) => {
                 </div>
                 <div className='player-info-level'>
                     <span className='player-info-level-title'>דירוג</span>
-                    <div className='player-info-level-select'><CostumSelect value={playerGrade} onChangeHandler={(event) => setPlayerGrade(event.target.value)} options={10}/></div>
+                    <div className='player-info-level-select'><CostumSelect value={playerGrade} onChangeHandler={(event) => setPlayerGrade(Number(event.target.value))} options={10}/></div>
                 </div>
             </div>
             <div className='player-button'>

@@ -3,14 +3,15 @@
 .costum-button {
     width: 100%;
     height: auto;
-    padding: .1rem 3rem;
-    font-size: 3rem;
+    padding: .1rem 2rem;
+    font-size: 2.5rem;
     background-color: $red;
     color: $text;
     border-radius: 1.5rem;
     border: 5px solid white;
     outline: none;
     transition: all .2s;
+    cursor: pointer;
    
 
     &:hover,
@@ -20,12 +21,18 @@
     }
 
    &:hover {
-       background-color: white;
-       color: $red;
-       border: 5px solid $red;
+       background-color: $darker-red;
+       
    }
 
-
-
-
 }
+.big{
+    font-size: 4rem;
+}
+
+.medium {
+    font-size: 3rem;
+}
+ small {
+     font-size: 2.5rem;
+ }

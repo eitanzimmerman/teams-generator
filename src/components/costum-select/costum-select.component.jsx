@@ -7,7 +7,7 @@ const CostumSelect = ({ value, onChangeHandler, options}) => {
     <select  value={value} className='costum-select'  onChange={onChangeHandler}>
       {
           
-          optionsArr.map((item,index) => <option className='costum-select-option'>{index+1}</option>)
+          optionsArr.map((item,index) => <option key={index} className='costum-select-option'>{index+1}</option>)
       }
     </select>
 

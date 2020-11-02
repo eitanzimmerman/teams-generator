@@ -1,12 +1,12 @@
 @import '../../assets/vars.scss';
 
-.sign-up {
-    width: 100%;
-    height: 70rem;
+.log-in {
     background-image: url('../../assets/log-in.svg');
     background-size: contain;
-    padding: 3rem;
     background-repeat: no-repeat;
+    height: 70rem;
+    padding: 3rem;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -18,7 +18,7 @@
         color: $text;
     }
 
-    .sign-up-form{
+    .log-in-form{
         width: 100%;
     }
 

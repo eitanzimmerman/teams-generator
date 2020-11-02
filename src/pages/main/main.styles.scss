@@ -1,19 +1,150 @@
+@import '../../assets/vars.scss';
 .main-page{
-    width: 100%;
+    display: flex;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+}
+.main-page-grid{
+    width: 70%;
+    // padding-bottom: 5rem;
+    // margin-top: 2rem;
     display: grid;
-    grid-template-columns: 40vw 30vw;
-    grid-template-rows: 25vh 25vh;
-    gap: 3rem 5rem;
-    
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    gap: 1rem 0rem;
+   
 
-    .box{
-        background-color: red;
+    @media only screen and (max-width: 900px) {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: stretch;
+        align-items: center;
+        width: 90%;
+        grid-template-rows: 1fr;
+    }
+
+    @media only screen and (max-width: 1600px) {
+        width: 90%;
+    }
+    
+    .features-titles{
+        color: $text;
+        font-size: 2rem;
+        font-weight: 300;
+        align-self: flex-end;
+        margin-bottom: 1rem;
+    }
+
+    .with-title-container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        
+    }
+    .box {
+        width: 100%;
+        justify-self: center;
+        // align-self: center;
+        @media only screen and (max-width: 786px) {
+            width: 100%;
+           
+        }
     }
     
 
     .b-4{
         align-self: center;
+        display: flex;
+        flex-direction: column;
+        max-width: 60rem;
+    }
+
+    .b-2{
+        display: flex;
+        flex-direction: column;
+        max-width: 60rem;
+        height: 100%;
+        
+    }
+
+    .b-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        max-height: 25rem;
+        min-height: 20rem;
+        max-width: 40rem;
+
+        .teams-divide{
+            background-color: $blue-2;
+            width: 100%;
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            border-radius: 1rem;
+            flex-direction: row-reverse;
+
+            &-text{
+                font-size: 2.2rem;
+                flex: 0 0 1;
+                font-weight: 500;
+                padding: 0 2rem;
+                color: $text;
+            }
+
+            &-select {
+                flex: 0 0 15%;
+            }
+
+        }
+        .team-name {
+            display: flex;
+            background-color: $blue-2;
+            padding: 1.5rem 0;
+            width: 100%;
+            justify-content: center;
+            border-radius: 1rem;
+            
+
+            &-input{
+                width: 90%;
+                height: 2.2rem;
+                background-color: $blue-3;
+                opacity: 0.85;
+                border: none;
+                padding: .1rem 1rem;
+                border-radius: 100px;
+                color: $text;
+                font-size: 2rem;
+
+                &:hover,
+                &:active,
+                &:focus{
+                    outline: none;
+                    border: none;
+                }
+            }
+        }
+
+    }
+
+    .b-3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 50rem;
+
+            .generate-button{
+                width: 80%;
+            }
+            @media only screen and (max-width: 900px) {
+                grid-row-start: 4;
+                grid-row-end: 5;
+                
+            }
+        
     }
 }
