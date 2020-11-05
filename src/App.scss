@@ -3,5 +3,6 @@
 .App {
   background-image: linear-gradient(180deg, $blue-4, $blue-3);
   min-height: 100vh;
+  overflow-y: hidden;
 }
 

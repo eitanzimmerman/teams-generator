@@ -10,16 +10,16 @@ const Header = () => {
     const [isLogInShowing, toggleLogIn] = useState(false)
 
     return(
-        <div>
-    <div className='header'>
-        <span>שלום אורח</span>
-        <div className='header-sign'>
-            <span className='header-sign-link' onClick={() => toggleLogIn(!isLogInShowing)}>התחבר</span>
-            <span className='header-sign-link' onClick={()=>toggleSignUp(!isSignUpShowing)}>הרשם</span>
+    <div className='test'>
+        <div className='header'>
+            <span>שלום אורח</span>
+            <div className='header-sign'>
+                <span className='header-sign-link' onClick={() => toggleLogIn(!isLogInShowing)}>התחבר</span>
+                <span className='header-sign-link' onClick={()=>toggleSignUp(!isSignUpShowing)}>הרשם</span>
+            </div>
         </div>
-    </div>
-    <Modal show={isSignUpShowing} clicked={()=>toggleSignUp(!isSignUpShowing)}><SignUp/></Modal>
-    <Modal show={isLogInShowing} clicked={()=>toggleLogIn(!isLogInShowing)}><LogIn/></Modal>
+        <Modal show={isSignUpShowing} clicked={()=>toggleSignUp(!isSignUpShowing)}><SignUp/></Modal>
+        <Modal show={isLogInShowing} clicked={()=>toggleLogIn(!isLogInShowing)}><LogIn/></Modal>
     </div>
 )}
 

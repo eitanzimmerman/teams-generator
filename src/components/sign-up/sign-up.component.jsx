@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+
 import './sign-up.styles.scss';
 
 import FormInput from '../../components/form-input/form-input.component';
+import CostumButton from '../costum-button/costum-button.component';
 
 const SignUp = () => {
     const [userCredentials, setCredentials] = useState({name:'', email:'', password:''})
@@ -43,6 +45,7 @@ const SignUp = () => {
                 required
                 />
             </form>
+            <CostumButton size='big' color='blue'>יאללה</CostumButton>
         </div>
     )
 }

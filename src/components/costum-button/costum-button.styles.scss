@@ -2,11 +2,11 @@
 
 .costum-button {
     // width: 100%;
-    min-height: 70px;
+    min-height: 10px;
     max-width: 500px;
     height: auto;
     padding: .1rem 2rem;
-    font-size: 2.5rem;
+    font-size: 3rem;
     background-color: $red;
     color: $text;
     border-radius: 1.5rem;
@@ -42,7 +42,8 @@
  .blue {
      background-color: $blue-4;
      color: $blue-1;
-
+     border:none;
+     min-width: 200px;
      &:hover{
          background-color: $darker-blue-4
      }

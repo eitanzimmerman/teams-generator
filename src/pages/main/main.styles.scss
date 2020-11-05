@@ -137,9 +137,7 @@
         align-items: center;
         max-width: 50rem;
 
-            .generate-button{
-                width: 80%;
-            }
+           
             @media only screen and (max-width: 900px) {
                 grid-row-start: 4;
                 grid-row-end: 5;

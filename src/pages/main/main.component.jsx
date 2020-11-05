@@ -10,16 +10,16 @@ import CostumButton from '../../components/costum-button/costum-button.component
 
 const MainPage = ({history}) => {
 
-    const [players , setPlayers] = useState( localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []);
-    const [teamName, setTeamName] = useState(localStorage.getItem('teamName') || '');
+    const [players , setPlayers] = useState( sessionStorage.getItem('players') ? JSON.parse(sessionStorage.getItem('players')) : []);
+    const [teamName, setTeamName] = useState(sessionStorage.getItem('teamName') || '');
     const [teamsNum, setTeamsNum] = useState(2);
 
     useEffect(() => {
-        localStorage.setItem('players', JSON.stringify(players))
+        sessionStorage.setItem('players', JSON.stringify(players))
     }, [players]);
 
     useEffect(() => {
-        localStorage.setItem('teamName',teamName)
+        sessionStorage.setItem('teamName',teamName)
     }, [teamName])
 
     const addPlayerToList = (name, grade) => {
