@@ -65,7 +65,6 @@ const MainPage = ({history}) => {
             return respone.data
         })
         .then(data => {
-            console.log('this',data);
             return history.push({
                 pathname: '/play/results',
                 state : {teams : data.teams, title: data.title, players : players}
