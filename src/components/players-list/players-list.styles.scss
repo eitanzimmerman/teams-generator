@@ -3,11 +3,12 @@
 .list-container{
     display: flex;
     flex-direction: column;
+
     background-color: $blue-2;
     opacity: 0.85;
     border-radius: 1rem;
     max-height: 30rem;
-    // min-height: 30rem;
+    min-height: 30rem;
     
     
 
@@ -33,6 +34,7 @@
     }
     .list-footer {
         justify-content: center;
+        margin-top: auto;
     }
 
     .players-list-items{

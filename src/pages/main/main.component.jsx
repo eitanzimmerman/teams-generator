@@ -98,6 +98,7 @@ const MainPage = ({history}) => {
             <div className='box b-2'>
                 <span className='features-titles'>הקבוצה שלי</span>
                 <PlayersList removeItemFromList={removeItemFromList} players={players}/>
+                <span style={{alignSelf:'center', marginTop: '1rem', fontSize:'1.5rem', color:'white', border: '1px solid white', padding: '.11rem'}} onClick={() => setPlayers([])}>אפס קבוצה</span>
             </div>
             <div className='box b-3'>
                 <div className='generate-button'>

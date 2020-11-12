@@ -33,7 +33,7 @@ const Header = () => {
     <div className='test'>
         <div className='header'>
                 <span className='header-sign'>{userContext.currentUser ? <Link to='/play/me' className='user-welcome'> <UserIcon className='user-welcome-icon'/> <p>שלום {userContext.currentUser.user.name}</p> </Link> : <p className='user-welcome'>שלום אורח</p>}</span>
-                <h1><Link to="/">הביתה</Link></h1>
+                <h1><Link to="/"><h1 style={{color:'red'}}>הביתה</h1></Link></h1>
             {
                 userContext.currentUser ?
                 <div className='header-sign'>
