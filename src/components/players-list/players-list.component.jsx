@@ -6,9 +6,9 @@ const PlayersList = ({players, removeItemFromList}) => {
 
     return (
         <div className='list-container'>
-            <div className='players-list-header'>
-                <span className='list-title'>שם</span>
-                <span className='list-title'>דירוג</span>
+            <div className='players-list-info'>
+                <span className='list-title-header'>שם</span>
+                <span className='list-title-header'>דירוג</span>
             </div>
             <ul className='players-list-items'>
                 {
@@ -24,6 +24,10 @@ const PlayersList = ({players, removeItemFromList}) => {
                 })
                 }
             </ul>
+            <div className='players-list-info list-footer'>
+                <span className='list-title-footer'>מס שחקנים</span>
+                <span className='list-title-footer'>{players.length}</span>
+            </div>
         </div>
     )
 }

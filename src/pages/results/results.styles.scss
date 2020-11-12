@@ -62,6 +62,10 @@
                     
                     &:hover{
                         opacity: 1;
+                        transform: translateY(-.2rem) scale(1.01);
+                    }
+                    &:active {
+                        transform: translateY(-.1rem) scale(1);
                     }
 
                     .result-icon {
@@ -69,6 +73,7 @@
                         height: 100%;
                         fill: $blue-1;
                         background-color: transparent;
+                        transition: all .3s ;
                     }
 
                     .copy-success{

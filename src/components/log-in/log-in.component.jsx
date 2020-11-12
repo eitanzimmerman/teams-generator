@@ -23,7 +23,7 @@ const LogIn = () => {
         if ( password.length < 7 || !email.includes('@')){
             alert("בעיה בהזנת הפרטים")
         }
-        const isAuth = userContext.authenticateUser(email, password, '', 'login');
+        userContext.authenticateUser(email, password, '', 'login');
         setCredentials({email:'', password:''})
     }
 

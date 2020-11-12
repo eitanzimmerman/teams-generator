@@ -8,11 +8,14 @@ import PlayersList from '../../components/players-list/players-list.component';
 import CostumSelect from '../../components/costum-select/costum-select.component';
 import CostumButton from '../../components/costum-button/costum-button.component';
 
+
+
 const MainPage = ({history}) => {
 
     const [players , setPlayers] = useState( sessionStorage.getItem('players') ? JSON.parse(sessionStorage.getItem('players')) : []);
     const [teamName, setTeamName] = useState(sessionStorage.getItem('teamName') || '');
     const [teamsNum, setTeamsNum] = useState(2);
+    
 
     useEffect(() => {
         sessionStorage.setItem('players', JSON.stringify(players))

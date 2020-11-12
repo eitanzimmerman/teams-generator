@@ -1,11 +1,14 @@
 import React, {useState, useContext} from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import UserContext from '../../context/user-context';
 import './header.styles.scss';
 
 import SignUp from '../sign-up/sign-up.component';
 import Modal from '../modal/modal.component';
 import LogIn from '../log-in/log-in.component';
-import UserContext from '../../context/user-context';
+import {ReactComponent as UserIcon} from '../../assets/user.svg'
+
 
 const Header = () => {
     const [isSignUpShowing, toggleSignUp] = useState(false)
@@ -20,7 +23,7 @@ const Header = () => {
         };
         axios.post(url,null,config)
         .then(response => {
-            if (response.status == 201) {
+            if (response.status === 201) {
                 userContext.logoutUser()
             }
         })
@@ -29,11 +32,12 @@ const Header = () => {
     return(
     <div className='test'>
         <div className='header'>
-                <span>{userContext.currentUser ? <p> שלום {userContext.currentUser.user.name} </p> : <p>שלום אורח</p>}</span>
+                <span className='header-sign'>{userContext.currentUser ? <Link to='/play/me' className='user-welcome'> <UserIcon className='user-welcome-icon'/> <p>שלום {userContext.currentUser.user.name}</p> </Link> : <p className='user-welcome'>שלום אורח</p>}</span>
+                <h1><Link to="/">הביתה</Link></h1>
             {
                 userContext.currentUser ?
                 <div className='header-sign'>
-                    <span className='header-sign-link' onClick={userContext.logoutUser}>התנתק</span>
+                    <span className='header-sign-link' onClick={handleLogOut}>התנתק</span>
                 </div>
                 :
                 <div className='header-sign'>

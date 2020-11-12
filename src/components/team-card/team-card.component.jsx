@@ -2,11 +2,11 @@ import React from 'react';
 import './team-card.styles.scss';
 
 
-const TeamCard = ({team}) => {
+const TeamCard = ({team, cardSize}) => { 
     const reducerFunc = (acc, item) => acc + item.grade;
-    const mean = team.reduce(reducerFunc,0)/team.length
+    const mean = team.reduce(reducerFunc, 0)/team.length
     return (
-        <div className='team-card'>
+        <div className='team-card' style={{minHeight : `${cardSize}rem`}}>
             <div className='team-card-header'>
                 <span className='card-text'>שם</span>
                 <span className='card-text'>דירוג</span>
@@ -24,7 +24,7 @@ const TeamCard = ({team}) => {
                 }
             </ul>
             <div className='team-card-footer'>
-                <h3 className='footer-text'><span className='mean-text'>{mean}</span> : ממוצע הקבוצה</h3>
+                <h3 className='footer-text'><span className='mean-text'>{mean.toFixed(1)}</span> : ממוצע הקבוצה</h3>
             </div>
         </div>
     )

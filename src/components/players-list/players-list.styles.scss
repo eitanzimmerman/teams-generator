@@ -3,36 +3,45 @@
 .list-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: $blue-2;
     opacity: 0.85;
     border-radius: 1rem;
     max-height: 30rem;
-    min-height: 30rem;
-    overflow-y: scroll;
+    // min-height: 30rem;
     
     
 
-    .players-list-header{
+    .players-list-info{
         display: flex;
-        width: 90%;
+        padding: 0 1rem;
         flex-direction: row-reverse;
         justify-content: space-between;
         
 
-        .list-title{
+        .list-title-header{
             font-size: 2.5rem;
             font-weight: 500;
             color: $text;
         }
+
+        .list-title-footer {
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0 1rem;
+            color: $blue-4;
+        }
+    }
+    .list-footer {
+        justify-content: center;
     }
 
     .players-list-items{
         display: flex;
         flex-direction: column;
         list-style-type: none;
-        width: 90%;
-        align-items: center;
+        padding: 0 1rem;
+        overflow-y: scroll;
+        margin-right: 1rem;
         
         
         
@@ -40,7 +49,6 @@
         .players-list-item{
             display: flex;
             flex-direction: row-reverse;
-            width: 100%;
             justify-content: space-between;
             font-size: 2rem;
             color: $text;
@@ -60,6 +68,7 @@
         }
         
     }
+
 }
 
 @keyframes fadeInFromBottom {

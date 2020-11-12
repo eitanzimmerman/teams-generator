@@ -7,6 +7,7 @@ import Header from './components/header/header.component';
 import HomePage from './pages/home/homepage.component';
 import MainPage from './pages/main/main.component';
 import ResultsPage from './pages/results/results.component';
+import MePage from './pages/me/me.component';
 
 
 import './App.scss';
@@ -39,7 +40,6 @@ function App() {
   }
 
   const handleLogoutUser = () => {
-    console.log('happend')
     sessionStorage.removeItem('currentUser');
     setCurrentUser(null);
   }
@@ -53,6 +53,7 @@ function App() {
             <Route exact path='/' component={HomePage} />
             <Route exact path='/play' component={MainPage} />
             <Route exact path='/play/results' render={(props) => <ResultsPage {...props}/>} />
+            <Route exact path='/play/me' component={MePage}/>
         </Switch>
       </UserContext.Provider>
       

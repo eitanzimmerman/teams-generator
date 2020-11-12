@@ -25,7 +25,7 @@ const SignUp = () => {
             return
         }
         
-        const isAuth = userContext.authenticateUser(email, password, name, 'signup');
+        userContext.authenticateUser(email, password, name, 'signup');
         setCredentials({name:'', email:'', password:''})
 
     }
