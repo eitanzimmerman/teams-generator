@@ -1,13 +1,18 @@
 import React, {useState, useContext} from 'react';
+import {withRouter, Redirect} from 'react-router-dom';
 import './log-in.styles.scss';
 
 import UserContext from '../../context/user-context';
 import FormInput from '../../components/form-input/form-input.component';
 import CostumButton from '../costum-button/costum-button.component';
+import WithSpinner from '../../hoc/with-spinner/with-spinner.component';
 
-const LogIn = () => {
+const CostumButtonWithSpinner = WithSpinner(CostumButton);
+
+const LogIn = ({toggleModal}) => {
     const [userCredentials, setCredentials] = useState({ email:'', password:''})
-
+    const [isLoading, setLoadingState] = useState(false);
+    const [showError, setShowErrorState ] = useState(false);
     const userContext = useContext(UserContext);
 
 
@@ -18,13 +23,22 @@ const LogIn = () => {
     
     const { email, password} = userCredentials;
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
+        setLoadingState(true)
         // simple validtaion -- need to be further developed
         if ( password.length < 7 || !email.includes('@')){
             alert("בעיה בהזנת הפרטים")
         }
-        userContext.authenticateUser(email, password, '', 'login');
-        setCredentials({email:'', password:''})
+        const isAuth = await userContext.authenticateUser(email, password, '', 'login');
+        if (!isAuth) {
+            setLoadingState(false)
+            setCredentials({email:'', password:''});
+            setShowErrorState(true);
+        } else {
+            setLoadingState(false);
+            toggleModal(false)
+        }
+
     }
 
     return (
@@ -48,9 +62,16 @@ const LogIn = () => {
                 required
                 />
             </form>
-            <CostumButton size='big' color='blue' clicked={handleButtonClick}>יאללה</CostumButton>
+            {
+                showError ? (
+                    <h3>שם משתמש או סיסמא שגויים. נסה שוב</h3>
+                ) : (
+                    null
+                )
+            }
+            <CostumButtonWithSpinner isLoading={isLoading} size='big' color='blue' clicked={handleButtonClick}>יאללה</CostumButtonWithSpinner>
         </div>
     )
 }
 
-export default LogIn;
+export default withRouter(LogIn);

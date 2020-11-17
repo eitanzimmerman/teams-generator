@@ -5,9 +5,16 @@ import './sign-up.styles.scss';
 import UserContext from '../../context/user-context';
 import FormInput from '../../components/form-input/form-input.component';
 import CostumButton from '../costum-button/costum-button.component';
+import WithSpinner from '../../hoc/with-spinner/with-spinner.component';
 
-const SignUp = () => {
+const CostumButtonWithSpinner = WithSpinner(CostumButton);
+
+
+const SignUp = ({toggleModal}) => {
     const [userCredentials, setCredentials] = useState({name:'', email:'', password:''})
+    const [isLoading, setLoadingState] = useState(false);
+    const [showError, setShowErrorState ] = useState(false);
+
 
     const userContext = useContext(UserContext);
 
@@ -18,14 +25,21 @@ const SignUp = () => {
 
     const {name, email, password} = userCredentials;
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         // simple validtaion -- need to be further developed
         if ( password.length < 7 || !email.includes('@')){
             alert("בעיה בהזנת הפרטים")
             return
         }
         
-        userContext.authenticateUser(email, password, name, 'signup');
+        const isAuth = await userContext.authenticateUser(email, password, name, 'signup');
+        if (!isAuth) {
+            setLoadingState(false)
+            setShowErrorState(true)
+        } else {
+            setLoadingState(false)
+            toggleModal(false)
+        }
         setCredentials({name:'', email:'', password:''})
 
     }
@@ -60,7 +74,12 @@ const SignUp = () => {
                 required
                 />
             </form>
-            <CostumButton size='big' color='blue' clicked={handleButtonClick}>יאללה</CostumButton>
+            {
+                showError ? (
+                    <h3>משהו קרה. נסה שוב</h3>
+                ) : null
+            }
+            <CostumButtonWithSpinner isLoading={isLoading} size='big' color='blue' clicked={handleButtonClick}>יאללה</CostumButtonWithSpinner>
         </div>
     )
 }

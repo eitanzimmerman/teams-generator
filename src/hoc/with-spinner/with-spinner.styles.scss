@@ -1,0 +1,30 @@
+@import '../../assets/vars.scss';
+
+.spinner-overlay {
+    // align-self: center;
+    // width: 100%;
+    // align-items: center;
+
+
+    .spinner-container{
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+        border: 10px solid $blue-4;
+        border-radius: 50%;
+        border-top-color: $blue-2;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }

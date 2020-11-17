@@ -13,14 +13,13 @@ import MePage from './pages/me/me.component';
 import './App.scss';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(sessionStorage.getItem('currentUser') ? JSON.parse(sessionStorage.getItem('currentUser')) : null)
-
+  const [currentUser, setCurrentUser] = useState(sessionStorage.getItem('currentUser') ? JSON.parse(sessionStorage.getItem('currentUser')) : null);
   useEffect(() => {
     sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
   }, [currentUser])
 
   
-  const handleAuthenticateUser = (email, password, name, method) => {
+  const handleAuthenticateUser = async (email, password, name, method) => {
     const url  = `http://localhost:5000/api/user/${(method === 'login') ? 'login' : ''}`
     const data = {
       email,
@@ -29,14 +28,24 @@ function App() {
     if (method === 'signup') {
       data.name = name
     }
-    axios.post(url, data)
-    .then( respone => respone.status === 201 ? respone.data : alert('problem with authenticating user'))
+    let isAuth;
+    await axios.post(url, data)
+    .then( respone => {
+      if (respone.status !== 201) {
+        throw new Error("problem authenticaing");
+      } 
+      return respone.data
+    })
     .then(data =>{
       setCurrentUser(data)
+      isAuth = true
+      console.log('happendW')
     })
     .catch(err=>{
       console.log(err)
+      isAuth = false
     })
+    return isAuth;
   }
 
   const handleLogoutUser = () => {
