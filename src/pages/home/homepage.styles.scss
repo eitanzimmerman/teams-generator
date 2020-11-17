@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 2rem;
 
     &-title{
         font-size: 6rem;
@@ -29,8 +30,6 @@
             margin-top: 3rem;
             fill: $red;
             transform: scale(1.5);
-
-            
         }
     }
 }

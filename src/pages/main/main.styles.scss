@@ -77,11 +77,8 @@
             transition: transform .5s ease;
             cursor: pointer;
             &:hover {
-                transform: translateY(-.2rem) scale(1.01);
-                
-            }
-            &:active{
-                transform: translateY(-.05rem) scale(1);
+                -webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	            animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
             }
 
         }
@@ -166,3 +163,62 @@
         
     }
 }
+
+
+ @-webkit-keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-1px);
+              transform: translateX(-1px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(1px);
+              transform: translateX(1px);
+    }
+    80% {
+      -webkit-transform: translateX(1px);
+              transform: translateX(1px);
+    }
+    90% {
+      -webkit-transform: translateX(-1px);
+              transform: translateX(-1px);
+    }
+  }
+  @keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-1px);
+              transform: translateX(-1px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(1px);
+              transform: translateX(1px);
+    }
+    80% {
+      -webkit-transform: translateX(1px);
+              transform: translateX(1px);
+    }
+    90% {
+      -webkit-transform: translateX(-1px);
+              transform: translateX(-1px);
+    }
+  }
+  
