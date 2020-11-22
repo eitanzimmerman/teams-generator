@@ -9,13 +9,14 @@
     .me-page-list-container {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
 
         h2{
             color: $blue-1;
             font-size: 2rem;
             margin-bottom: 1rem;
             margin-right: 1rem;
+            align-self: flex-end;
         }
 
     
@@ -26,9 +27,10 @@
             min-height: 20rem;
             min-width: 40rem;
             max-width: 50rem;
-            margin: 0 1rem;
+            margin: 0 1rem 5rem 1rem;
             background-color: $blue-4;
             border-radius: 1.5rem;
+
 
             h3 {
                 font-size: 1.8rem;

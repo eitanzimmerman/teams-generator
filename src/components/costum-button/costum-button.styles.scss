@@ -14,6 +14,7 @@
     outline: none;
     transition: all .2s;
     cursor: pointer;
+    margin-bottom: 10px;
    
 
     &:hover,
@@ -47,6 +48,19 @@
      &:hover{
          background-color: $darker-blue-4
      }
+ }
+
+ .disabled {
+     opacity: 0.6;
+     color: grey;
+     background-color: $blue-4;
+
+     &:hover {
+        color: grey;
+        opacity: 0.6;
+        background-color: $blue-4;
+        
+    }
  }
 
  

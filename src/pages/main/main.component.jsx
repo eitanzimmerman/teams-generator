@@ -1,20 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import './main.styles.scss';
+
+import UserContext from '../../context/user-context';
 
 import AddPlayer from '../../components/add-player/add-player.component';
 import PlayersList from '../../components/players-list/players-list.component';
 import CostumSelect from '../../components/costum-select/costum-select.component';
 import CostumButton from '../../components/costum-button/costum-button.component';
-
+import { ReactComponent as SaveIcon} from '../../assets/floppy-disk.svg';
 
 
 const MainPage = ({history}) => {
 
-    const [players , setPlayers] = useState( sessionStorage.getItem('players') ? JSON.parse(sessionStorage.getItem('players')) : []);
+    const [players , setPlayers] = useState(sessionStorage.getItem('players') ? JSON.parse(sessionStorage.getItem('players')) : []);
     const [teamName, setTeamName] = useState(sessionStorage.getItem('teamName') || '');
     const [teamsNum, setTeamsNum] = useState(2);
+    const [isSaved, setSaved] = useState(false);
+
+    const userContext = useContext(UserContext);
     
 
     useEffect(() => {
@@ -51,7 +56,7 @@ const MainPage = ({history}) => {
         return true
     }
 
-    const handleClicked = () => {
+    const handleSubmitClicked = () => {
         const isDivisionValid = players.length % teamsNum === 0;
         if (!teamName || !isDivisionValid) {
             alert('מספר השחקנים צריך להתחלק במספר הקבוצות')
@@ -74,6 +79,29 @@ const MainPage = ({history}) => {
             })
         })
 
+    }
+
+    const handleSave = () => {
+        const url = `http://localhost:5000/api/team`;
+        const token = userContext.currentUser.token
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        const data = {
+            title : teamName,
+            players : players
+        }
+        axios.post(url,data,config)
+        .then(response => {
+            console.log(response)
+            if (response.status === 201){
+                setSaved(true);
+                setTimeout(() => {
+                    setSaved(false)
+                }, 3000)
+            }
+        })
+        .catch(err => console.log(err, 'this came from saving team to user'))
     }
 
     return (
@@ -101,9 +129,8 @@ const MainPage = ({history}) => {
                 <span className='reset-team'  onClick={() => setPlayers([])}>אפס קבוצה</span>
             </div>
             <div className='box b-3'>
-                <div className='generate-button'>
-                    <CostumButton size='big' clicked={handleClicked}>אפשר להתחיל</CostumButton>
-                </div>
+                    <CostumButton size='big' clicked={handleSubmitClicked}>חלק לקבוצות</CostumButton>
+                    <CostumButton disabled={userContext.currentUser ? false : true}  size='small' color="blue" clicked={handleSave}><div className='save-option'><SaveIcon className='save-icon'/> שמור לקבוצות שלי </div></CostumButton>
             </div>
             <div className='box b-4'>
                 <span className='features-titles'>הוספת שחקן</span>

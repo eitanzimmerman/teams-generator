@@ -2,7 +2,7 @@ import React from 'react';
 import './costum-button.styles.scss';
 
 const CostumButton = (props) => (
-    <button className={`costum-button ${props.size} ${props.color}`} type='submit' onClick={props.clicked}>
+    <button disabled={props.disabled ? props.disabled : false} className={`costum-button ${props.size} ${props.color} ${props.disabled ? 'disabled' : ''} `} type='submit' onClick={props.clicked}>
         {props.children}
     </button>
 )

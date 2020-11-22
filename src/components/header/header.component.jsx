@@ -47,8 +47,8 @@ const Header = ({history}) => {
                 </div>
             }
         </div>
-        <Modal show={isSignUpShowing} clicked={()=>toggleSignUp(!isSignUpShowing)}><SignUp toggleModal={toggleSignUp}/></Modal>
-        <Modal show={isLogInShowing} clicked={()=>toggleLogIn(!isLogInShowing)}><LogIn toggleModal={toggleLogIn}/></Modal>
+        <Modal  show={isSignUpShowing} clicked={()=>toggleSignUp(!isSignUpShowing)}><SignUp toggleModal={toggleSignUp}/></Modal>
+        <Modal  show={isLogInShowing} clicked={()=>toggleLogIn(!isLogInShowing)}><LogIn toggleModal={toggleLogIn}/></Modal>
     </div>
 )}
 

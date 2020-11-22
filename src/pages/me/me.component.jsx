@@ -1,16 +1,18 @@
-import React, {useContext, useEffect, useState, useRef} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import './me.styles.scss';
 
 import WithSpinner from '../../hoc/with-spinner/with-spinner.component';
 
 import TeamCard from '../../components/team-card/team-card.component';
+import CostumButton from '../../components/costum-button/costum-button.component';
 
 import UserContext from '../../context/user-context';
 
 const TeamCardWithSpinner = WithSpinner(TeamCard)
 
-const MePage = () => {
+const MePage = ({history}) => {
     const userContext = useContext(UserContext);
     const [userTeams, setUserTeams] = useState([]);
     const [selectedTeam, selectTeam] = useState({players: []});
@@ -49,6 +51,12 @@ const MePage = () => {
         setCurrentLinkId(team._id)
     }
 
+    const handleButtonClick = () => {
+        sessionStorage.setItem('players', JSON.stringify(selectedTeam.players));
+        sessionStorage.setItem('teamName',selectedTeam.title)
+        history.push('/play')
+    }
+
     return (
         <div className='me-page-container'>
             { 
@@ -59,7 +67,6 @@ const MePage = () => {
                     )
            
                 }
-            
             <div className='me-page-list-container' >
                 <h2>הקבוצות שלי</h2>
                 <ul className='teams-list'>
@@ -73,9 +80,10 @@ const MePage = () => {
                         )
                     }
                 </ul>
+                <CostumButton size='big' clicked={handleButtonClick}>עשה כוחות</CostumButton>
             </div>
         </div>
     )
 }
 
-export default MePage;
+export default withRouter(MePage);
