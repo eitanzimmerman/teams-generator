@@ -1,31 +1,24 @@
 
-import React,{useContext} from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import './results.styles.scss';
 
 import useCopyToClipBoard from '../../hooks/useCopyToClipboard';
 import { handleArrayCopy } from '../../utils/handle-array-copy';
-import UserContext from '../../context/user-context';
+
 
 import TeamCard from '../../components/team-card/team-card.component';
 import { ReactComponent as CopyIcon} from '../../assets/content_copy.svg';
-import { ReactComponent as SaveIcon} from '../../assets/floppy-disk.svg';
 import { ReactComponent as ReturnIcon} from '../../assets/undo.svg';
 
 import CostumButton from '../../components/costum-button/costum-button.component';
-import { useState } from 'react';
 
 
 const Results = ({location, history}) => {
 
-    const {teams, title, players} = location.state
+    const {teams, title} = location.state
     const [isCopied, handleCopy] = useCopyToClipBoard(3000);
-
-    const userContext = useContext(UserContext);
-
-    
 
 
     return (

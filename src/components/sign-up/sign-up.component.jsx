@@ -1,6 +1,9 @@
 import React, {useState, useContext} from 'react';
+import Swal from 'sweetalert2';
 
 import './sign-up.styles.scss';
+
+
 
 import UserContext from '../../context/user-context';
 import FormInput from '../../components/form-input/form-input.component';
@@ -28,7 +31,10 @@ const SignUp = ({toggleModal}) => {
     const handleButtonClick = async () => {
         // simple validtaion -- need to be further developed
         if ( password.length < 7 || !email.includes('@')){
-            alert("בעיה בהזנת הפרטים")
+            Swal.fire({
+                title: "בעיה בהזנת הפרטים",
+                icon: "warning"
+            })
             return
         }
         

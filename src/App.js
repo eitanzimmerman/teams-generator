@@ -12,6 +12,7 @@ import MePage from './pages/me/me.component';
 
 import './App.scss';
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState(sessionStorage.getItem('currentUser') ? JSON.parse(sessionStorage.getItem('currentUser')) : null);
   useEffect(() => {

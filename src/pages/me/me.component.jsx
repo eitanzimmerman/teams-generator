@@ -59,6 +59,7 @@ const MePage = ({history}) => {
 
     return (
         <div className='me-page-container'>
+            
             { 
                 selectedTeam.players.length > 0 ? (
                     <TeamCardWithSpinner isLoading={isLoading} team={selectedTeam.players} cardSize={40}/>
@@ -82,6 +83,7 @@ const MePage = ({history}) => {
                 </ul>
                 <CostumButton size='big' clicked={handleButtonClick}>עשה כוחות</CostumButton>
             </div>
+            
         </div>
     )
 }

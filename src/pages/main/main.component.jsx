@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {withRouter} from 'react-router-dom';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import './main.styles.scss';
 
@@ -17,10 +18,8 @@ const MainPage = ({history}) => {
     const [players , setPlayers] = useState(sessionStorage.getItem('players') ? JSON.parse(sessionStorage.getItem('players')) : []);
     const [teamName, setTeamName] = useState(sessionStorage.getItem('teamName') || '');
     const [teamsNum, setTeamsNum] = useState(2);
-    const [isSaved, setSaved] = useState(false);
 
     const userContext = useContext(UserContext);
-    
 
     useEffect(() => {
         sessionStorage.setItem('players', JSON.stringify(players))
@@ -59,7 +58,10 @@ const MainPage = ({history}) => {
     const handleSubmitClicked = () => {
         const isDivisionValid = players.length % teamsNum === 0;
         if (!teamName || !isDivisionValid) {
-            alert('מספר השחקנים צריך להתחלק במספר הקבוצות')
+            Swal.fire({
+                icon: "warning",
+                title: "מספר השחקנים חייב להתחלק במספר הקבוצות"
+            })
             return
         }
         const url = `http://localhost:5000/api/calc?divide=${teamsNum}`
@@ -82,26 +84,55 @@ const MainPage = ({history}) => {
     }
 
     const handleSave = () => {
-        const url = `http://localhost:5000/api/team`;
-        const token = userContext.currentUser.token
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
-        const data = {
-            title : teamName,
-            players : players
+        if(!teamName || !players) {
+            Swal.fire({
+                title: 'אופס!',
+                text: 'לא ניתן לשמור קבוצה בלי שם או שחקנים',
+                icon: 'error',
+                confirmButtonText: 'אחלה הבנתי',
+                
+              })
+            return
         }
-        axios.post(url,data,config)
-        .then(response => {
-            console.log(response)
-            if (response.status === 201){
-                setSaved(true);
-                setTimeout(() => {
-                    setSaved(false)
-                }, 3000)
-            }
-        })
-        .catch(err => console.log(err, 'this came from saving team to user'))
+        Swal.fire({
+            title:  'לשמור את הקבוצה ?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: "שמור",
+            confirmButtonColor: "#3d5a80",
+            cancelButtonColor:"#c54d2f",
+            cancelButtonText:"לא הפעם"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                const url = `http://localhost:5000/api/team`;
+                const token = userContext.currentUser.token;
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` }
+                };
+                const data = {
+                    title : teamName,
+                    players : players
+                }
+                axios.post(url,data,config)
+                .then(response => {
+                    console.log(response)
+                    if (response.status === 201){
+                        Swal.fire({
+                            title: "נשמר בהצלחה",
+                            icon: "success"
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err, 'this came from saving team to user');
+                    Swal.fire({
+                        icon: "error",
+                        title: "משהו התפקשש בשרת.. נסה שוב"
+                    })
+                });
+            } 
+            })
+        
     }
 
     return (

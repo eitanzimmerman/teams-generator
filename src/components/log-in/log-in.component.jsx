@@ -1,6 +1,8 @@
 import React, {useState, useContext} from 'react';
-import {withRouter, Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './log-in.styles.scss';
+
+import Swal from 'sweetalert2';
 
 import UserContext from '../../context/user-context';
 import FormInput from '../../components/form-input/form-input.component';
@@ -24,11 +26,15 @@ const LogIn = ({toggleModal}) => {
     const { email, password} = userCredentials;
 
     const handleButtonClick = async () => {
-        setLoadingState(true)
         // simple validtaion -- need to be further developed
         if ( password.length < 7 || !email.includes('@')){
-            alert("בעיה בהזנת הפרטים")
+            Swal.fire({
+                title: "בעיה בהזנת הפרטים",
+                icon: "warning"
+            })
+            return
         }
+        setLoadingState(true)
         const isAuth = await userContext.authenticateUser(email, password, '', 'login');
         if (!isAuth) {
             setLoadingState(false)

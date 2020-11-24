@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { Link, Redirect, withRouter } from 'react-router-dom';
+import { Link,  withRouter } from 'react-router-dom';
 import axios from 'axios';
 import UserContext from '../../context/user-context';
 import './header.styles.scss';
